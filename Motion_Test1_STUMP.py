@@ -138,23 +138,18 @@ def main ():
             beaker.gripper("open")
             time.sleep(0.5)
             
+            beaker.set_joints_to_home_position()
+            beaker.start_robot()
             
             break
         elif R_1 == "0":
             beaker.set_joints_to_home_position()
+            beaker.start_robot()
             print("Returning to the home position.")
         else:
             print("Invalid input. Please enter 1 to proceed or 0 to return home.")
         
 
-
-    
-        
-        
-     
-    
-    
-    
         print("--------------------")
         print("Final Position")
         print("--------------------")
