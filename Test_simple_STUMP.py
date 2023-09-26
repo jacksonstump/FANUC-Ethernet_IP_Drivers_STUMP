@@ -1,3 +1,4 @@
+from pickle import FALSE, TRUE
 import sys
 import time
 
@@ -52,6 +53,7 @@ def main ():
         
 
         beaker.conveyor("stop")
+        Conveyor_Forward=False
         beaker.gripper("open")
 
         beaker.set_pose(HOME)
@@ -79,6 +81,31 @@ def main ():
 
             beaker.gripper("open")
             time.sleep(0.5)
+
+            beaker.send_coords(INT_DICE2[0],INT_DICE2[1], INT_DICE2[2], INT_DICE2[3], INT_DICE2[4], INT_DICE2[5])
+            beaker.start_robot()
+
+            right_prox=beaker.conveyor_proximity_sensor("right")
+            left_prox=beaker.conveyor_proximity_sensor("left")
+
+            if right_prox and not left_prox:
+                beaker.conveyor("forward")
+                Conveyor_Forward= True
+                time.sleep(0.5)
+            else:
+                print("Start Proximity Sensor Not Triggered")
+
+            if left_prox and not right_prox:
+                beaker.conveyor("stop")
+                Conveyor_Forward= False
+                time.sleep(0.5)
+            else:
+                print("Stop Proximity Sensor Not Triggered")
+                beaker.conveyor("stop")
+
+
+
+
 
         elif R_1 == "0":
             beaker.set_pose(HOME)
