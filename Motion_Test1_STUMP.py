@@ -150,6 +150,7 @@ def main ():
             print("Invalid input. Please enter 1 to proceed or 0 to return home.")
         
 
+
         print("--------------------")
         print("Final Position")
         print("--------------------")
