@@ -20,15 +20,15 @@ import random
 from robot_controller import robot
 
 # Global Constants
-#drive_path = '129.101.98.214' # Bill
-drive_path = '129.101.98.215' # DJ
-#drive_path = '129.101.98.244' # Larry
+
+beaker = '172.29.209.124' 
+
 
 def main():
     """! Main program entry"""
 
     # Create new robot object
-    crx10 = robot(drive_path)
+    crx10 = robot(beaker)
 
     # Set robot speed
     crx10.set_speed(300)
@@ -54,6 +54,9 @@ def main():
 
         # Close Gripper
         crx10.gripper('close')
+        time.sleep(2)
+
+        crx10.gripper('open')
         time.sleep(2)
 
         # increment loops
