@@ -94,14 +94,16 @@ def main ():
                 time.sleep(0.5)
             else:
                 print("Start Proximity Sensor Not Triggered")
-
-            if left_prox and not right_prox:
-                beaker.conveyor("stop")
-                Conveyor_Forward= False
-                time.sleep(0.5)
-            else:
-                print("Stop Proximity Sensor Not Triggered")
-                beaker.conveyor("stop")
+            while Conveyor_Forward is True:
+                beaker.send_coords(INT_DICE3[0],INT_DICE3[1], INT_DICE3[2], INT_DICE3[3], INT_DICE3[4], INT_DICE[5])
+                beaker.start_robot()
+                if left_prox and not right_prox:
+                    beaker.conveyor("stop")
+                    Conveyor_Forward= False
+                    time.sleep(0.5)
+                else:
+                    print("Stop...Proximity Sensor Not Triggered")
+                    beaker.conveyor("stop")
 
 
 

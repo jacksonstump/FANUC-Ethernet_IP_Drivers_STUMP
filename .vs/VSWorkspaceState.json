@@ -2,10 +2,6 @@
   "ExpandedNodes": [
     ""
   ],
-<<<<<<< HEAD
-  "SelectedNode": "\\shunk_gripper_example.py",
-=======
-  "SelectedNode": "\\robot_controller.py",
->>>>>>> 8fcd661e0b114c557c9946287287982734732f8e
+  "SelectedNode": "\\conveyor_grab_loop_V2.py",
   "PreviewInSolutionExplorer": false
 }
