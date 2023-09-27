@@ -91,8 +91,7 @@ def main():
             
             print("Grabbing Dice...")        
             move_robot_linear(beaker, Dice_Grab2)
-            beaker.gripper("close")
-            time.sleep(0.5)
+            gripper(beaker,"close",0.5)
             
             print("Clearance Move")
             move_robot_linear(beaker, INT_DICE3)
@@ -104,8 +103,7 @@ def main():
             
             print("Dropping dice...")
             move_robot_linear(beaker, Dice_Grab1)
-            beaker.gripper("open")
-            time.sleep(0.5)
+            gripper(beaker,"open",0.5)
             
             print("Clearance Move")
             move_robot_linear(beaker, INT_Dice1)
