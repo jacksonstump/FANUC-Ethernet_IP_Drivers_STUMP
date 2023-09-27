@@ -1,7 +1,3 @@
 {
-<<<<<<< HEAD
-  "TestFramework": "Pytest",
-=======
->>>>>>> 8fcd661e0b114c557c9946287287982734732f8e
   "Interpreter": "Global|PythonCore|3.11"
 }

@@ -85,25 +85,25 @@ def main ():
             beaker.send_coords(INT_DICE2[0],INT_DICE2[1], INT_DICE2[2], INT_DICE2[3], INT_DICE2[4], INT_DICE2[5])
             beaker.start_robot()
 
-            right_prox=beaker.conveyor_proximity_sensor("right")
-            left_prox=beaker.conveyor_proximity_sensor("left")
+            #right_prox=beaker.conveyor_proximity_sensor("right")
+            #left_prox=beaker.conveyor_proximity_sensor("left")
 
-            if right_prox and not left_prox:
-                beaker.conveyor("forward")
-                Conveyor_Forward= True
-                time.sleep(0.5)
-            else:
-                print("Start Proximity Sensor Not Triggered")
-            while Conveyor_Forward is True:
-                beaker.send_coords(INT_DICE3[0],INT_DICE3[1], INT_DICE3[2], INT_DICE3[3], INT_DICE3[4], INT_DICE[5])
-                beaker.start_robot()
-                if left_prox and not right_prox:
-                    beaker.conveyor("stop")
-                    Conveyor_Forward= False
-                    time.sleep(0.5)
-                else:
-                    print("Stop...Proximity Sensor Not Triggered")
-                    beaker.conveyor("stop")
+            #if right_prox and not left_prox:
+            #    beaker.conveyor("forward")
+            #    Conveyor_Forward= True
+            #    time.sleep(0.5)
+            #else:
+            #    print("Start Proximity Sensor Not Triggered")
+            #while Conveyor_Forward is True:
+            #    beaker.send_coords(INT_DICE3[0],INT_DICE3[1], INT_DICE3[2], INT_DICE3[3], INT_DICE3[4], INT_DICE[5])
+            #    beaker.start_robot()
+            #    if left_prox and not right_prox:
+            #        beaker.conveyor("stop")
+            #        Conveyor_Forward= False
+            #        time.sleep(0.5)
+            #    else:
+            #        print("Stop...Proximity Sensor Not Triggered")
+            #        beaker.conveyor("stop")
 
 
 
