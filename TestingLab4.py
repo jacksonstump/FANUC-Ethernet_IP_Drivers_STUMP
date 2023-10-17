@@ -20,21 +20,18 @@ def gripper(beaker,position,dwell):
     time.sleep(dwell)    
 
 Beaker = '172.29.208.124'
-Bunson = '172.29.208.123'
-
 
 HOME        = [0,           0,          0,          0,          -90,        30]
-        
+INT_Dice1   = [825.267,     351.151,    -180,       -179.286,   0.64,       31.021]        
 
 def main():
     
     beaker = robot(Beaker)
-    bunson = robot(Bunson)
     cycles = 1
     beaker.set_speed(300)
     beaker.gripper("open")
-    bunson.set_speed(300)
-    bunson.gripper("open")
+
+
 
     while cycles <= 1:
         
@@ -44,7 +41,10 @@ def main():
 
         print("Moving HOME")
         move_robot_joint(beaker, HOME)
-        move_robot_joint(bunson, HOME)
+        
+        print("Position Above Dice")
+        move_robot_linear(beaker, INT_Dice1)
+        
         cycles += 1
 
     print("--------------------")

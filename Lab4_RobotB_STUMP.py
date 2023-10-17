@@ -5,7 +5,7 @@ import pickle
 from robot_controller import robot
 
 def move_robot_linear(beaker, cartcoords):
-    beaker.send_coords(*cartcoords)
+    beaker.write_cartesian_position(*cartcoords)
     beaker.start_robot()
     
 def move_robot_joint(beaker, jointcoords):
@@ -17,23 +17,17 @@ def joint_offset(beaker, joint, offset):
     beaker.start_robot()
     
 def gripper(beaker,position,dwell):
-    beaker.gripper(position)
+    beaker.shunk_gripper(position)
     time.sleep(dwell)    
 
 def Transform_A_to_B(A_coordinates):
-
-
-    #A_coordinates=Received_coord[0]
-    X=A_coordinates[0][0]
-    Y=A_coordinates[0][1]
-    Z=A_coordinates[0][2]
+    X=A_coordinates[0][0]  + 23.33
+    Y=A_coordinates[0][1]  + 1433.77
+    Z=A_coordinates[0][2]  + 57.35 
     W=-A_coordinates[0][3] if A_coordinates[0][3] is not None else None
     P=-A_coordinates[0][4] if A_coordinates[0][4] is not None else None
     R=-A_coordinates[0][5] if A_coordinates[0][5] is not None else None
-    X_off=X+23
-    Y_off=Y +23
-    Z_off=Z+23
-    offset_data = [X_off, Y_off, Z_off, W, P, R]
+    offset_data = [X, Y, Z, W, P, R]
     
     return offset_data
     

@@ -14,7 +14,7 @@ INT_DICE4   = [886,         320,        -180,       180,        0.696,      -59]
 Rotate      = [0, 0, 0, 0, 90]
 
 def move_robot_linear(beaker, cartcoords):
-    beaker.send_coords(*cartcoords)
+    beaker.write_cartesian_position(*cartcoords)
     beaker.start_robot()
     
 def move_robot_joint(beaker, jointcoords):
