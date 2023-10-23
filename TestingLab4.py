@@ -1,7 +1,13 @@
 import socket
+import sys
 import time
 import pickle
+import sys
+import time
+from os.path import dirname 
+sys.path.append(dirname(__file__)+"\\src")
 from robot_controller import robot
+
 
 def move_robot_linear(beaker, cartcoords):
     beaker.send_coords(*cartcoords)
@@ -24,32 +30,35 @@ Beaker = '172.29.208.124'
 HOME        = [0,           0,          0,          0,          -90,        30]
 INT_Dice1   = [825.267,     351.151,    -180,       -179.286,   0.64,       31.021]        
 
-def main():
-    
-    beaker = robot(Beaker)
-    cycles = 1
-    beaker.set_speed(300)
-    beaker.gripper("open")
+
+# Client configuration
+server_ip =  '172.29.208.124'  # Replace with Robot B's IP address
+server_port = 5007  # Replace with the same port number used on Robot A
+
+# Sample list of coordinates      
+
+# Create a socket object
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect to the server (Robot A)
+client_socket.connect(('172.29.208.25',server_port))
+print(f"Connected to {server_ip}:{server_port}")
+
+
+try:
+    # Serialize and send the coordinates using pickle
+    #data_to_send = pickle.dumps([INT_Dice1])
+    #client_socket.send(data_to_send)
+    #print(f"Sent coordinates to Robot A")
+
+
+        client_socket.send(pickle.dumps([INT_Dice1]))
 
 
 
-    while cycles <= 1:
-        
-        print("--------------------")
-        print(f"Cycle: {cycles}/3")
-        print("--------------------")
+except KeyboardInterrupt:
+    print("Client terminated by user")
 
-        print("Moving HOME")
-        move_robot_joint(beaker, HOME)
-        
-        print("Position Above Dice")
-        move_robot_linear(beaker, INT_Dice1)
-        
-        cycles += 1
-
-    print("--------------------")
-    print("Cycle STOP")
-    print("--------------------")
-
-if __name__ == "__main__":
-    main()
+finally:
+    # Close the socket
+    client_socket.close()

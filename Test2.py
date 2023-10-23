@@ -1,5 +1,10 @@
+import socket
 import sys
 import time
+import pickle
+import random
+from os.path import dirname 
+sys.path.append(dirname(__file__)+"\\src")
 from robot_controller import robot
 
 HOME        = [0,           0,          0,          0,          -90,        30]
@@ -48,11 +53,7 @@ def main():
         print("Moving HOME")
         move_robot_joint(beaker, HOME)
         
-        print("Position Above Dice")
-        move_robot_linear(beaker, INT_Dice1)
-
-
-        write_robot_connection_bit(1)
+        
 
 
         print("--------------------")
