@@ -1,0 +1,8 @@
+digraph Flowchart {
+	node [color=lightyellow style=filled]
+	edge [color=blue]
+	dpi=300
+	rankdir=LR
+	Import_Dependencies [label="Import Dependencies"]
+	Define_Functions [label="Define Functions"]
+}

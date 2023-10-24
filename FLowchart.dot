@@ -1,0 +1,6 @@
+digraph Flowchart {
+	node [color=lightyellow style=filled]
+	edge [color=blue]
+	dpi=300
+	rankdir=LR
+}
